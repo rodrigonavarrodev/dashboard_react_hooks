@@ -1,16 +1,38 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+
+
+import React from 'react';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListSubheader from '@material-ui/core/ListSubheader';
+
 
 export const Navbar = () => {
+  return (
+    <div>
+    <ListItem button>
+ 
+      <ListItemText primary="Dashboard" />
+    </ListItem>
+    <ListItem button>
+      
+      <ListItemText primary="Orders" />
+    </ListItem>
+    <ListItem button>
+      
+      <ListItemText primary="Customers" />
+    </ListItem>
+    <ListItem button>
+ 
+      <ListItemText primary="Reports" />
+    </ListItem>
+    <ListItem button>
+     
+      <ListItemText primary="Integrations" />
+    </ListItem>
+  </div>
+);
 
-    const { name } = useSelector(state => state.auth )
+ 
 
-    return (
-        <div className="navbar navbar-dark bg-dark mb-4">
-            <span className="navbar-brand">
-               Hola: { name }
-            </span>
-            
-        </div>
-    )
 }

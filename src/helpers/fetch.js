@@ -1,5 +1,5 @@
 export const fetchSinToken = (endpoint, data, method = "GET") => {
-  const url = `https://inbank.accionpoint.com/api/dev/bo/${endpoint}`;
+  const url = `http://localhost:5000/${endpoint}`;
 
   if (method === "GET") {
     return fetch(url);
@@ -15,7 +15,7 @@ export const fetchSinToken = (endpoint, data, method = "GET") => {
 };
 
 export const fetchConToken = (endpoint, data, method = "GET") => {
-  const url = `https://inbank.accionpoint.com/api/dev/bo/${endpoint}`;
+  const url = `http://localhost:5000/${endpoint}`;
   const token = localStorage.getItem("token") || "";
 
   if (method === "GET") {

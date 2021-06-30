@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
 import { startChecking } from "../actions/auth";
 import { LoginScreen } from "../components/auth/LoginScreen";
 import { DashboardScreen } from "../components/dashboard/DashboardScreen";
+import { AddEmployeesScreen } from "../components/employees/AddEmployeesScreen";
+import { EmployeesScreen } from "../components/employees/EmployeesScreen";
 import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
 
@@ -29,6 +31,8 @@ export const AppRouter = () => {
   
           <PublicRoute exact path="/login" component={LoginScreen} isAuthenticated={ !!id } />
           <PrivateRoute exact path="/" component={DashboardScreen} isAuthenticated={ !!id } />
+          <PrivateRoute exact path="/empleados" component={EmployeesScreen} isAuthenticated={ !!id } />
+          <PrivateRoute exact path="/agregarempleados" component={AddEmployeesScreen} isAuthenticated={ !!id } />
 
           <Redirect to="/" />
 

@@ -1,55 +1,11 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles, rgbToHex } from "@material-ui/core/styles";
 
 import { useDispatch } from "react-redux";
 import { startLogin } from "../../actions/auth";
 import { useForm } from "../../hooks/useForm";
 //import "./login.css";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    height: "100vh",
-  },
-  image: {
-    backgroundImage: "url(./illustrations-login_animated.svg)",
-
-    backgroundRepeat: "no-repeat",
-    backgroundColor:
-      theme.palette.type === "light"
-        ? theme.palette.grey[50]
-        : theme.palette.grey[900],
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  },
-  paper: {
-    margin: theme.spacing(8, 4),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  avatar: {
-    image: "url(./logo-ap-b.svg)",
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "80%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  }
-}));
-
 export const LoginScreen = () => {
-  const classes = useStyles();
-
   const dispatch = useDispatch();
   const [formLoginValues, handleLoginInputChange] = useForm({
     email: "",
@@ -64,59 +20,92 @@ export const LoginScreen = () => {
   };
 
   return (
-    <Grid container component="main" className={classes.root}>
-      <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <div className={classes.paper}>
-          <img src="./logo-ap-b.svg" className="mb-5"></img>
-
-          <form className={classes.form} onSubmit={handleLogin} noValidate>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email"
-              name="email"
-              value={email}
-              onChange={handleLoginInputChange}
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              value={password}
-              name="password"
-              value={password}
-              onChange={handleLoginInputChange}
-              type="password"
-              label="Password"
-            />
-
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Ingresar
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Olvidaste tu datos?
-                </Link>
-              </Grid>
-            </Grid>
-          </form>
+    <div id="auth">
+      <div className="row h-100">
+        <div className="col-lg-5 col-12">
+          <div id="auth-left">
+            <div className="auth-logo">
+              <a href="index.html">
+                <img src="/logo-ap-b.svg" alt="Logo" />
+              </a>
+            </div>
+            <h1 className="auth-title">Hola</h1>
+            <p className="auth-subtitle mb-5">
+              Si ya tenes cuenta ingresa tus datos!
+            </p>
+            <form onSubmit={handleLogin} action="index.html">
+              <div className="form-group position-relative has-icon-left mb-4">
+                <input
+                  type="text"
+                  className="form-control form-control-xl"
+                  placeholder="Correo"
+                  name="email"
+                  value={email}
+                  onChange={handleLoginInputChange}
+                />
+                <div className="form-control-icon">
+                  <i className="bi bi-person" />
+                </div>
+              </div>
+              <div className="form-group position-relative has-icon-left mb-4">
+                <input
+                  type="password"
+                  className="form-control form-control-xl"
+                  placeholder="Password"
+                  placeholder="Contraseña"
+                  name="password"
+                  value={password}
+                  onChange={handleLoginInputChange}
+                />
+                <div className="form-control-icon">
+                  <i className="bi bi-shield-lock" />
+                </div>
+              </div>
+              <div className="form-check form-check-lg d-flex align-items-end">
+                <input
+                  className="form-check-input me-2"
+                  type="checkbox"
+                  defaultValue
+                  id="flexCheckDefault"
+                />
+                <label
+                  className="form-check-label text-gray-600"
+                  htmlFor="flexCheckDefault"
+                >
+                  Mantenerme logueado!
+                </label>
+              </div>
+              <button className="btn btn-primary btn-block btn-lg shadow-lg mt-5">
+                Ingresar
+              </button>
+            </form>
+            <div className="text-center mt-5 text-lg fs-4">
+              <p className="text-gray-600">
+                ¿No tenes cuenta?{" "}
+                <a href="auth-register.html" className="font-bold">
+                  Registrate
+                </a>
+                .
+              </p>
+              <p>
+                <a className="font-bold" href="auth-forgot-password.html">
+                  ¿Olvidaste tu contraseña?
+                </a>
+                .
+              </p>
+            </div>
+          </div>
         </div>
-      </Grid>
-    </Grid>
+        <div className="col-lg-7 d-none d-lg-block">
+          <div id="auth-right">
+            <img
+              src="/illustrations-login_animated.svg"
+              alt="Logo"
+              width="100%"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
